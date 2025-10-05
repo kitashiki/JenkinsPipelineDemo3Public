@@ -8,6 +8,7 @@ pipeline {
                 sh'echo "Hello again!"'
                 sh """
                   echo "sh again!"
+                  echo 'sh again again!!'
                 """
             }
         }
