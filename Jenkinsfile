@@ -70,7 +70,8 @@ pipeline {
                 echo 'Releasing'
             }
         } 
-        post {
+    }
+     post {
         always {
             echo "Entire pipeline succeeded!"
             // mail to: banfuy@gmail.com, subject: 'The Pipeline succeeded! :('
@@ -79,7 +80,6 @@ pipeline {
             // mail to: banfuy@gmail.com, subject: 'The Pipeline failed :('
             echo "Entire pipeline failed..."
         }
-    }
     }
 }   
 
