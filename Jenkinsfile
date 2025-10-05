@@ -17,6 +17,15 @@ pipeline {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
         }
+        stage('Jenkins Envs') {
+            steps {
+                echo "RunningAgain ${env.BUILD_ID} on ${env.JENKINS_URL}"
+
+                sh '''
+                  echo "Running ${BUILD_NUMBER} and ${BUILD_ID} for ${JOB_NAME} on node ${NODE_NAME} at URL:${JENKINS_URL}"
+                '''
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building'
