@@ -78,7 +78,7 @@ pipeline {
         }
         success {
             echo "All stage succeeded!"
-            mail to: banfuy@gmail.com, subject: 'All stage succeeded! :('
+            // mail to: banfuy@gmail.com, subject: 'All stage succeeded! :('
         }
         failure { // <--------エラーの場合
             // mail to: banfuy@gmail.com, subject: 'The Pipeline failed :('
