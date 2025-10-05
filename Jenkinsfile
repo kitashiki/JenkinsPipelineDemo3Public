@@ -19,6 +19,7 @@ pipeline {
         }
         stage('PowerShell') {
             steps {
+                echo "PowerShell"
                 // powershell 'echo "Hello World!!"'
             }
         }
