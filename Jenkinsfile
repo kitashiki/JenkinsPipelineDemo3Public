@@ -5,7 +5,7 @@ pipeline {
         stage('Hello') {
             steps {
                 echo 'Hello from GitHub hook trigger'
-                powershell 'echo "Hello again!"'
+                sh'echo "Hello again!"'
             }
         }
         stage('Build') {
