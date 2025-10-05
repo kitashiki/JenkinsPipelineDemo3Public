@@ -74,10 +74,11 @@ pipeline {
      post {
         always {
             echo "Entire pipeline succeeded!"
-            mail to: banfuy@gmail.com, subject: 'The Pipeline succeeded! :('
+            // mail to: banfuy@gmail.com, subject: 'The Pipeline succeeded! :('
         }
         success {
-            echo "All Stage succeeded!"
+            echo "All stage succeeded!"
+            mail to: banfuy@gmail.com, subject: 'All stage succeeded! :('
         }
         failure { // <--------エラーの場合
             // mail to: banfuy@gmail.com, subject: 'The Pipeline failed :('
