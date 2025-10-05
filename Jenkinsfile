@@ -77,6 +77,7 @@ pipeline {
         }
         failure { // <--------エラーの場合
             // mail to: banfuy@gmail.com, subject: 'The Pipeline failed :('
+            echo "Entire pipeline failed..."
         }
     }
     }
