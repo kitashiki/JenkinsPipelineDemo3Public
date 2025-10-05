@@ -1,6 +1,14 @@
 pipeline {
     agent any
+    parameters { // <------- 様々なタイプ(string, input, )のparametersがある
+        string(name: 'PERSON', defaultValue: 'Jenkins', description: "What's your name?")
+        
+        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
 
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+
+        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+    }
     stages {
         stage('Hello') {
             steps {
@@ -20,7 +28,7 @@ pipeline {
         stage('PowerShell') {
             steps {
                 echo "PowerShell"
-                powershell "<Write-Host> ${env.BUILD_ID} "
+                // powershell "<Write-Host> ${env.BUILD_ID} "
                 echo "PowerShell2"
             }
         }
