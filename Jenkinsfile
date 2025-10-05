@@ -20,7 +20,7 @@ pipeline {
         stage('PowerShell') {
             steps {
                 echo "PowerShell"
-                // powershell 'Write-Host "Hello World!!" '
+                powershell "<Write-Host> ${env.BUILD_ID} "
                 echo "PowerShell2"
             }
         }
