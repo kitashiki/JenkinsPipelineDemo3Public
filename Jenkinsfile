@@ -6,6 +6,9 @@ pipeline {
             steps {
                 echo 'Hello from GitHub hook trigger'
                 sh'echo "Hello again!"'
+                sh """
+                  echo "sh again!"
+                """
             }
         }
         stage('Build') {
