@@ -17,6 +17,11 @@ pipeline {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
         }
+        stage('PowerShell') {
+            steps {
+                powershell 'echo "Hello World!!"; echo "${env.WORKSPACE}'
+            }
+        }
         stage('Jenkins Envs') {
             steps {
                 echo "RunningAgain ${env.BUILD_ID} on ${env.JENKINS_URL}"
