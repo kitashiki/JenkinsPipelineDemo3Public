@@ -20,7 +20,7 @@ pipeline {
         stage('PowerShell') {
             steps {
                 echo "PowerShell"
-                powershell 'echo "Hello World!!" '
+                powershell 'Write-Host "Hello World!!" '
             }
         }
         stage('Jenkins Envs') {
