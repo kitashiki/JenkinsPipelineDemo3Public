@@ -23,6 +23,15 @@ pipeline {
         stage('Example') {
             steps {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                
+                // parameterのアクセスの仕方： ${params.PARAM_NAME}
+                echo "Hello ${params.PERSON}"
+
+                echo "Biography: ${params.BIOGRAPHY}"
+
+                echo "Toggle: ${params.TOGGLE}"
+
+                echo "Choice: ${params.CHOICE}"
             }
         }
         stage('PowerShell') {
