@@ -76,6 +76,9 @@ pipeline {
             echo "Entire pipeline succeeded!"
             // mail to: banfuy@gmail.com, subject: 'The Pipeline succeeded! :('
         }
+        success {
+            echo "All Stage succeeded!"
+        }
         failure { // <--------エラーの場合
             // mail to: banfuy@gmail.com, subject: 'The Pipeline failed :('
             echo "Entire pipeline failed..."
