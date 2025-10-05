@@ -74,7 +74,7 @@ pipeline {
      post {
         always {
             echo "Entire pipeline succeeded!"
-            // mail to: banfuy@gmail.com, subject: 'The Pipeline succeeded! :('
+            mail to: banfuy@gmail.com, subject: 'The Pipeline succeeded! :('
         }
         success {
             echo "All Stage succeeded!"
