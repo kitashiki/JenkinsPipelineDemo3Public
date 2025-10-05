@@ -17,8 +17,7 @@ pipeline {
                 echo 'Deploying' 
                 }
             }
-        }
-        stage('Test') {
+         stage('Test') {
             steps {
                 echo 'Testing'
             }
@@ -27,6 +26,8 @@ pipeline {
             steps {
                 echo 'Releasing'
             }
-        }
+        } 
     }
+}   
+
 
