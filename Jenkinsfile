@@ -50,6 +50,35 @@ pipeline {
                 '''
             }
         }
+        stage('Build0') {
+            steps {
+                sh'''
+                    # Jenkins env BRANCH_NAME will be available for multi-branch pipeline. Ref: https://www.jenkins.io/doc/book/pipeline/multibranch/#additional-environment-variables
+                    APP_VERSION=${BRANCH_NAME}-0.1.${BUILD_NUMBER}
+                    
+                    HELM_CHART_FILE_NAME=app-staging-${APP_VERSION}.tgz
+
+                    mkdir -p outputs
+
+                    echo ${HELM_CHART_FILE_NAME} > outputs/staging-chart-filename.txt && cat outputs/staging-chart-filename.txt
+                    
+                    ls -l outputs/
+                '''
+                // フォルダーをstashすることで、次のステージにフォルダーを持ち込める
+                stash name: "chart_file_name", includes: "outputs/*"
+            }
+        }
+        stage('Test0') {
+            steps {
+                unstash "chart_file_name" // <------- unstash
+                sh 'pwd && ls -l outputs/'
+                
+                sh '''
+                    CHART_FILE_NAME=$(cat outputs/staging-chart-filename.txt)
+                    echo "chart file name is ${CHART_FILE_NAME}"
+                '''
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building'
