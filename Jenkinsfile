@@ -79,6 +79,15 @@ pipeline {
                 '''
             }
         }
+        stage(" sh()") {
+            steps {
+                // short form 
+                sh 'echo hello'
+
+                // long form
+                sh([script: 'echo hello'])
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building'
