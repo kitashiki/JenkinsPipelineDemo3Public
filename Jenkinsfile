@@ -20,6 +20,12 @@ pipeline {
                 """
             }
         }
+        stage('DayTimeStamp Test') {
+            steps {
+                echo "DayTimeStamp!"
+                echo "${BUILD_TIMESTAMP}"
+            }
+        }
         stage('Example') {
             steps {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
