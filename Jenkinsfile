@@ -129,8 +129,14 @@ pipeline {
             echo "Entire pipeline succeeded!"
             // mail to: banfuy@gmail.com, subject: 'The Pipeline succeeded! :('
             archiveArtifacts artifacts: "Jenkinsfile",
+                fingerprint: true,
                 allowEmptyArchive: true
             archiveArtifacts "outputs${BUILD_NUMBER}/*"
+                fingerprint: true,
+                allowEmptyArchive: true
+            archiveArtifacts "outputs/*"
+                fingerprint: true,
+                allowEmptyArchive: true 
         }
         success {
             echo "All stage succeeded!"
