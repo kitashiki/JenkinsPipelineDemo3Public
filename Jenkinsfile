@@ -136,7 +136,8 @@ pipeline {
                 allowEmptyArchive: true
             archiveArtifacts artifacts: "outputs/*",
                 fingerprint: true,
-                allowEmptyArchive: true 
+                allowEmptyArchive: true
+            archiveArtifacts "outputs/*"
         }
         success {
             echo "All stage succeeded!"
