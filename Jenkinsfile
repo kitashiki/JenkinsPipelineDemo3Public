@@ -73,20 +73,20 @@ pipeline {
                     
                     HELM_CHART_FILE_NAME=app-staging-${APP_VERSION}.tgz
 
-                    mkdir -p outputs
+                    mkdir -p outputs${BUILD_NUMBER}
 
-                    echo ${HELM_CHART_FILE_NAME} > outputs/staging-chart-filename.txt && cat outputs/staging-chart-filename.txt
+                    echo ${HELM_CHART_FILE_NAME} > outputs${BUILD_NUMBER}/staging-chart-filename.txt && cat outputs${BUILD_NUMBER}/staging-chart-filename.txt
                     
-                    ls -l outputs/
+                    ls -l outputs${BUILD_NUMBER}/
                 '''
                 // フォルダーをstashすることで、次のステージにフォルダーを持ち込める
-                stash name: "chart_file_name", includes: "outputs/*"
+                stash name: "chart_file_name", includes: "outputs${BUILD_NUMBER}/*"
             }
         }
         stage('Test0') {
             steps {
                 unstash "chart_file_name" // <------- unstash
-                sh 'pwd && ls -l outputs/'
+                sh 'pwd && ls -l outputs${BUILD_NUMBER}/'
                 
                 sh '''
                     CHART_FILE_NAME=$(cat outputs/staging-chart-filename.txt)
@@ -131,7 +131,7 @@ pipeline {
             archiveArtifacts artifacts: "Jenkinsfile",
                 fingerprint: true,
                 allowEmptyArchive: true
-            // archiveArtifacts "build.gradle"
+            archiveArtifacts "outputs${BUILD_NUMBER}/*"
         }
         success {
             echo "All stage succeeded!"
