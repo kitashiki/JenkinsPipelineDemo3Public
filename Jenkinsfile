@@ -42,11 +42,11 @@ pipeline {
                 echo "Choice: ${params.CHOICE}"
             }
         }
-        stage('Hello') {
-            steps {
-                
-            }
-        }
+       // stage('Hello') {
+       //     steps {
+       //         
+       //     }
+       // }
         stage('PowerShell') {
             steps {
                 echo "PowerShell"
