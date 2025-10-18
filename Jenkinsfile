@@ -121,6 +121,9 @@ pipeline {
         always {
             echo "Entire pipeline succeeded!"
             // mail to: banfuy@gmail.com, subject: 'The Pipeline succeeded! :('
+            archiveArtifacts artifacts: "Jenkinsfile",
+                fingerprint: true,
+                allowEmptyArchive: true
         }
         success {
             echo "All stage succeeded!"
