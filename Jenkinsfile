@@ -129,7 +129,7 @@ pipeline {
             archiveArtifacts artifacts: "Jenkinsfile",
                 fingerprint: true,
                 allowEmptyArchive: true
-            archiveArtifacts "build.gradle"
+            // archiveArtifacts "build.gradle"
         }
         success {
             echo "All stage succeeded!"
