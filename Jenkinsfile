@@ -42,6 +42,11 @@ pipeline {
                 echo "Choice: ${params.CHOICE}"
             }
         }
+        stage('Hello') {
+            steps {
+                
+            }
+        }
         stage('PowerShell') {
             steps {
                 echo "PowerShell"
@@ -124,6 +129,7 @@ pipeline {
             archiveArtifacts artifacts: "Jenkinsfile",
                 fingerprint: true,
                 allowEmptyArchive: true
+            archiveArtifacts "build.gradle"
         }
         success {
             echo "All stage succeeded!"
