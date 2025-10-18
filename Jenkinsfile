@@ -42,9 +42,9 @@ pipeline {
                 echo "Choice: ${params.CHOICE}"
             }
         }
-       // stage('Hello') {
-       //     steps {
-       //         
+        stage('TestStep') {
+            steps {
+               echo "Node_Name → ${NODE_NAME} "
        //     }
        // }
         stage('PowerShell') {
