@@ -131,10 +131,10 @@ pipeline {
             archiveArtifacts artifacts: "Jenkinsfile",
                 fingerprint: true,
                 allowEmptyArchive: true
-            archiveArtifacts "outputs${BUILD_NUMBER}/*",
+            archiveArtifacts artifacts: "outputs${BUILD_NUMBER}/*",
                 fingerprint: true,
                 allowEmptyArchive: true
-            archiveArtifacts "outputs/*",
+            archiveArtifacts artifacts: "outputs/*",
                 fingerprint: true,
                 allowEmptyArchive: true 
         }
