@@ -75,7 +75,7 @@ pipeline {
 
                     mkdir -p outputs${BUILD_NUMBER}/${BUILD_NUMBER}
 
-                    echo ${HELM_CHART_FILE_NAME} > outputs${BUILD_NUMBER}/${BUILD_NUMBER}/staging-chart-filename.txt && cat outputs${BUILD_NUMBER}/${BUILD_NUMBER}/staging-chart-filename.txt
+                    echo ${HELM_CHART_FILE_NAME} > outputs${BUILD_NUMBER}/staging-chart-filename.txt && cat outputs${BUILD_NUMBER}/staging-chart-filename.txt
                     
                     ls -l outputs${BUILD_NUMBER}/
                 '''
@@ -89,7 +89,7 @@ pipeline {
                 sh 'pwd && ls -l outputs${BUILD_NUMBER}/'
                 
                 sh '''
-                    CHART_FILE_NAME=$(cat outputs${BUILD_NUMBER}/${BUILD_NUMBER}/staging-chart-filename.txt)
+                    CHART_FILE_NAME=$(cat outputs${BUILD_NUMBER}/staging-chart-filename.txt)
                     echo "chart file name is ${CHART_FILE_NAME}"
                 '''
             }
