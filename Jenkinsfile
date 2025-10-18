@@ -45,8 +45,8 @@ pipeline {
         stage('TestStep') {
             steps {
                echo "Node_Name → ${NODE_NAME} "
-       //     }
-       // }
+            }
+        }
         stage('PowerShell') {
             steps {
                 echo "PowerShell"
