@@ -134,9 +134,9 @@ pipeline {
             archiveArtifacts artifacts: "outputs${BUILD_NUMBER}/*",
                 fingerprint: true,
                 allowEmptyArchive: true
-            archiveArtifacts artifacts: "outputs/*",
-                fingerprint: true,
-                allowEmptyArchive: true
+            // archiveArtifacts artifacts: "outputs/*",
+            //     fingerprint: true,
+            //     allowEmptyArchive: true
             archiveArtifacts "outputs/*"
         }
         success {
