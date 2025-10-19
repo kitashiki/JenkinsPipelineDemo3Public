@@ -141,8 +141,9 @@ pipeline {
             archiveArtifacts "outputs/**/*"
             //Groovy 実験 プラグイン後
             script {
-            //    def it = 2
+                def i = 2
                 echo "script adding"
+                println i
             }
         }
         success {
