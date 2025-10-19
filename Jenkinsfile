@@ -143,6 +143,7 @@ pipeline {
             script {
                 def i = 2
                 echo "script adding"
+                echo "${i}"
                 println i
             }
         }
