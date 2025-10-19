@@ -25,7 +25,7 @@ pipeline {
         stage('DayTimeStamp Test') {
             steps {
                 echo "DayTimeStamp!"
-                // BUILD TIMESTAMP をプラグインしたので、時間の環境変数が使えるようになった。表示方式はJenkinsで設定できる。今はyyyyMMddにしている。
+                // BUILD TIMESTAMP をプラグインしたので、時間の環境変数が使えるようになった。表示方式はJenkinsのsystemで設定できる。今はyyyyMMddにしている。
                 echo "${BUILD_TIMESTAMP}"
                 echo "${env.BUILD_TIMESTAMP}"
                 sh 'date'
