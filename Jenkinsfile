@@ -139,10 +139,10 @@ pipeline {
             //     allowEmptyArchive: true
             archiveArtifacts "outputs/**/*"
             //Groovy 実験 プラグイン後
-            script {
-                def it = 2
-                echo "it = ${it}"
-            }
+            //script {
+            //    def it = 2
+            //    echo "it = ${it}"
+            //}
         }
         success {
             echo "All stage succeeded!"
