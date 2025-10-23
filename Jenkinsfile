@@ -146,7 +146,7 @@ pipeline {
                 echo "i は ${i}"
                 println i
                 sh "mkdir -p OUTputs${BUILD_NUMBER}/${BUILD_NUMBER}"
-                sh "cp Jenkinsfile OUTputs${BUILD_NUMBER}/JenkinsfileCOPY"
+                sh "cp Jenkinsfile OUTputs${BUILD_NUMBER}/${BUILD_NUMBER}/JenkinsfileCOPY"
             }
             archiveArtifacts artifacts: "OUTputs${BUILD_NUMBER}/**/*",
                 fingerprint: true,
