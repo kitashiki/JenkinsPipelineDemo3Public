@@ -146,7 +146,11 @@ pipeline {
                 echo "i は ${i}"
                 println i
                 sh "mkdir -p OUTputs${BUILD_NUMBER}/${BUILD_NUMBER}"
+            archiveArtifacts artifacts: "OUTputs${BUILD_NUMBER}/**/*",
+                fingerprint: true,
+                allowEmptyArchive: true
             }
+            
         }
         success {
             echo "All stage succeeded!"
