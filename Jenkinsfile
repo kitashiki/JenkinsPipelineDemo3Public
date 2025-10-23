@@ -145,6 +145,7 @@ pipeline {
                 echo "script adding"
                 echo "i は ${i}"
                 println i
+                mkdir Outputs
             }
         }
         success {
