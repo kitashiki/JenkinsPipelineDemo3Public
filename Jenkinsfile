@@ -19,7 +19,7 @@ pipeline {
         //        powershell """
         //          echo "not sh powershell again!"
         //          echo 'not sh powershell again again!!'
-                """
+        //        """
             }
         }
         stage('DayTimeStamp Test') {
