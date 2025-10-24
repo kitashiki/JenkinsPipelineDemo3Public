@@ -149,7 +149,7 @@ pipeline {
                 sh "cp Jenkinsfile OUTputs${BUILD_NUMBER}/${BUILD_NUMBER}/JenkinsfileCOPY${BUILD_NUMBER}"
                 sh "echo ${env.BUILD_ID} "
                 //pwsh "echo ${env.BUILD_ID} "
-                sh 'pwsh $PSVersionTable'
+                //sh 'pwsh $PSVersionTable'
             }
             archiveArtifacts artifacts: "OUTputs${BUILD_NUMBER}/**/*",
                 fingerprint: true,
