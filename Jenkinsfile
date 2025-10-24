@@ -147,7 +147,7 @@ pipeline {
                 println i
                 sh "mkdir -p OUTputs${BUILD_NUMBER}/${BUILD_NUMBER}"
                 sh "cp Jenkinsfile OUTputs${BUILD_NUMBER}/${BUILD_NUMBER}/JenkinsfileCOPY${BUILD_NUMBER}"
-                pwsh "echo ${env.BUILD_ID} "
+                sh "echo ${env.BUILD_ID} "
             }
             archiveArtifacts artifacts: "OUTputs${BUILD_NUMBER}/**/*",
                 fingerprint: true,
