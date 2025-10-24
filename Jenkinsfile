@@ -125,13 +125,13 @@ pipeline {
             }
         } 
     }
-     post {
-        always {
-            echo "Entire pipeline succeeded!"
+//     post {
+//        always {
+//            echo "Entire pipeline succeeded!"
             // mail to: banfuy@gmail.com, subject: 'The Pipeline succeeded! :('
-            archiveArtifacts artifacts: "Jenkinsfile",
-                fingerprint: true,
-                allowEmptyArchive: true
+//            archiveArtifacts artifacts: "Jenkinsfile",
+//                fingerprint: true,
+//                allowEmptyArchive: true
         //    archiveArtifacts artifacts: "outputs${BUILD_NUMBER}/**/*",
         //        fingerprint: true,
         //        allowEmptyArchive: true
@@ -140,28 +140,28 @@ pipeline {
             //     allowEmptyArchive: true
         //    archiveArtifacts "outputs/**/*"
             //Groovy 実験 プラグイン後
-            script {
-                def i = 2
-                echo "script adding"
-                echo "i は ${i}"
-                println i
+//            script {
+//                def i = 2
+//                echo "script adding"
+//                echo "i は ${i}"
+//                println i
                 //sh "mkdir -p OUTputs${BUILD_NUMBER}/${BUILD_NUMBER}"
                 //sh "cp Jenkinsfile OUTputs${BUILD_NUMBER}/${BUILD_NUMBER}/JenkinsfileCOPY${BUILD_NUMBER}"
                 //sh "echo ${env.BUILD_ID} "
                 //pwsh "echo ${env.BUILD_ID} "
                 //sh 'pwsh $PSVersionTable'
-            }
+//            }
         //    archiveArtifacts artifacts: "OUTputs${BUILD_NUMBER}/**/*",
         //        fingerprint: true,
         //        allowEmptyArchive: true
-        }
-        success {
-            echo "All stage succeeded!"
+//        }
+//        success {
+//            echo "All stage succeeded!"
             // mail to: banfuy@gmail.com, subject: 'All stage succeeded! :('
-        }
-        failure { // <--------エラーの場合
+//        }
+//        failure { // <--------エラーの場合
             // mail to: banfuy@gmail.com, subject: 'The Pipeline failed :('
-            echo "Entire pipeline failed..."
-        }
-    }
+//           echo "Entire pipeline failed..."
+//        }
+//    }
 }   
