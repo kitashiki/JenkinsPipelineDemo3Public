@@ -138,7 +138,7 @@ pipeline {
             // archiveArtifacts artifacts: "outputs/*",
             //     fingerprint: true,
             //     allowEmptyArchive: true
-            archiveArtifacts "outputs/**/*"
+            //archiveArtifacts "outputs/**/*"
             //Groovy 実験 プラグイン後
             script {
                 def i = 2
