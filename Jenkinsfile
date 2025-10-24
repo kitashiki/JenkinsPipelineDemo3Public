@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'built-in'
+        label 'built-in-other'
     }
     parameters { // <------- 様々なタイプ(string, input, )のparametersがある
         string(name: 'PERSON', defaultValue: 'Jenkins', description: "What's your name?")
