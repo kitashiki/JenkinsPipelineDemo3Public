@@ -29,6 +29,7 @@ pipeline {
                 echo "${BUILD_TIMESTAMP}"
                 echo "${env.BUILD_TIMESTAMP}"
                 powershell 'date'
+                pwsh 'date'
             }
         }
         stage('Example') {
