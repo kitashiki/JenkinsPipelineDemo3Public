@@ -28,7 +28,7 @@ pipeline {
                 // BUILD TIMESTAMP をプラグインしたので、時間の環境変数が使えるようになった。表示方式はJenkinsのsystemで設定できる。今はyyyyMMddにしている。
                 echo "${BUILD_TIMESTAMP}"
                 echo "${env.BUILD_TIMESTAMP}"
-                sh 'date'
+                //sh 'date'
             }
         }
         stage('Example') {
@@ -57,53 +57,52 @@ pipeline {
                 echo "PowerShell2"
             }
         }
-        stage('Jenkins Envs') {
-            steps {
-                echo "RunningAgain ${env.BUILD_ID} on ${env.JENKINS_URL}"
+        //stage('Jenkins Envs') {
+        //    steps {
+        //        echo "RunningAgain ${env.BUILD_ID} on ${env.JENKINS_URL}"
+        //        sh '''
+        //          echo "Running ${BUILD_NUMBER} and ${BUILD_ID} for ${JOB_NAME} on node ${NODE_NAME} at URL:${JENKINS_URL}"
+        //        '''
+        //    }
+        //}
+        //stage('Build0') {
+        //    steps {
+        //        sh'''
+        //            # Jenkins env BRANCH_NAME will be available for multi-branch pipeline. Ref: https://www.jenkins.io/doc/book/pipeline/multibranch/#additional-environment-variables
+        //            APP_VERSION=${BRANCH_NAME}-0.1.${BUILD_NUMBER}
+        //            
+        //            HELM_CHART_FILE_NAME=app-staging-${APP_VERSION}.tgz
 
-                sh '''
-                  echo "Running ${BUILD_NUMBER} and ${BUILD_ID} for ${JOB_NAME} on node ${NODE_NAME} at URL:${JENKINS_URL}"
-                '''
-            }
-        }
-        stage('Build0') {
-            steps {
-                sh'''
-                    # Jenkins env BRANCH_NAME will be available for multi-branch pipeline. Ref: https://www.jenkins.io/doc/book/pipeline/multibranch/#additional-environment-variables
-                    APP_VERSION=${BRANCH_NAME}-0.1.${BUILD_NUMBER}
+        //        mkdir -p outputs${BUILD_NUMBER}/${BUILD_NUMBER}
+
+        //        echo ${HELM_CHART_FILE_NAME} > outputs${BUILD_NUMBER}/staging-chart-filename.txt && cat outputs${BUILD_NUMBER}/staging-chart-filename.txt
                     
-                    HELM_CHART_FILE_NAME=app-staging-${APP_VERSION}.tgz
-
-                    mkdir -p outputs${BUILD_NUMBER}/${BUILD_NUMBER}
-
-                    echo ${HELM_CHART_FILE_NAME} > outputs${BUILD_NUMBER}/staging-chart-filename.txt && cat outputs${BUILD_NUMBER}/staging-chart-filename.txt
-                    
-                    ls -l outputs${BUILD_NUMBER}/
-                '''
+        //        ls -l outputs${BUILD_NUMBER}/
+        //      '''
                 // フォルダーをstashすることで、次のステージにフォルダーを持ち込める
-                stash name: "chart_file_name", includes: "outputs${BUILD_NUMBER}/*"
-            }
-        }
-        stage('Test0') {
-            steps {
-                unstash "chart_file_name" // <------- unstash
-                sh 'pwd && ls -l outputs${BUILD_NUMBER}/'
-                
-                sh '''
-                    CHART_FILE_NAME=$(cat outputs${BUILD_NUMBER}/staging-chart-filename.txt)
-                    echo "chart file name is ${CHART_FILE_NAME}"
-                '''
-            }
-        }
-        stage(" sh()") {
-            steps {
-                // short form 
-                sh 'echo hello'
+        //      stash name: "chart_file_name", includes: "outputs${BUILD_NUMBER}/*"
+        //  }
+        //
+        //stage('Test0') {
+        //    steps {
+        //        unstash "chart_file_name" // <------- unstash
+        //        sh 'pwd && ls -l outputs${BUILD_NUMBER}/'
+        //        
+        //        sh '''
+        //            CHART_FILE_NAME=$(cat outputs${BUILD_NUMBER}/staging-chart-filename.txt)
+        //            echo "chart file name is ${CHART_FILE_NAME}"
+        //        '''
+        //    }
+        //}
+        //stage(" sh()") {
+        //    steps {
+        //        // short form 
+        //        sh 'echo hello'
 
-                // long form
-                sh([script: 'echo hello'])
-            }
-        }
+        //        // long form
+        //        sh([script: 'echo hello'])
+        //    }
+        //}
         stage('Build') {
             steps {
                 echo 'Building'
@@ -132,13 +131,13 @@ pipeline {
             archiveArtifacts artifacts: "Jenkinsfile",
                 fingerprint: true,
                 allowEmptyArchive: true
-            archiveArtifacts artifacts: "outputs${BUILD_NUMBER}/**/*",
-                fingerprint: true,
-                allowEmptyArchive: true
+        //    archiveArtifacts artifacts: "outputs${BUILD_NUMBER}/**/*",
+        //        fingerprint: true,
+        //        allowEmptyArchive: true
             // archiveArtifacts artifacts: "outputs/*",
             //     fingerprint: true,
             //     allowEmptyArchive: true
-            archiveArtifacts "outputs/**/*"
+        //    archiveArtifacts "outputs/**/*"
             //Groovy 実験 プラグイン後
             script {
                 def i = 2
@@ -151,9 +150,9 @@ pipeline {
                 //pwsh "echo ${env.BUILD_ID} "
                 //sh 'pwsh $PSVersionTable'
             }
-            archiveArtifacts artifacts: "OUTputs${BUILD_NUMBER}/**/*",
-                fingerprint: true,
-                allowEmptyArchive: true
+        //    archiveArtifacts artifacts: "OUTputs${BUILD_NUMBER}/**/*",
+        //        fingerprint: true,
+        //        allowEmptyArchive: true
         }
         success {
             echo "All stage succeeded!"
