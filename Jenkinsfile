@@ -151,7 +151,7 @@ pipeline {
             archiveArtifacts artifacts: "OUTputs${BUILD_NUMBER}/**/*",
                 fingerprint: true,
                 allowEmptyArchive: true
-            powershell "Write-Host ${env.BUILD_ID} "
+            powershell "echo ${env.BUILD_ID} "
         }
         success {
             echo "All stage succeeded!"
