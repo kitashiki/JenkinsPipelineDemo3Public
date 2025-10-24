@@ -15,11 +15,11 @@ pipeline {
         stage('Hello') {
             steps {
                 echo 'Hello from GitHub hook trigger'
-                sh'echo "Hello again!"'
-                sh """
-                  echo "sh again!"
-                  echo 'sh again again!!'
-                """
+        //        sh'echo "Hello again!"'
+        //        sh """
+        //          echo "sh again!"
+        //          echo 'sh again again!!'
+        //        """
             }
         }
         stage('DayTimeStamp Test') {
