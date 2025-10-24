@@ -29,7 +29,7 @@ pipeline {
                 echo "${BUILD_TIMESTAMP}"
                 echo "${env.BUILD_TIMESTAMP}"
                 powershell 'date'
-                pwsh 'date'
+                //pwsh 'date'  ←Windows上のJenkins agent ではpwshはエラーになる（AWS上のLinux agentでもエラーになった。AWSよくわからん）
             }
         }
         stage('Example') {
@@ -54,7 +54,7 @@ pipeline {
         stage('PowerShell') {
             steps {
                 echo "PowerShell"
-                // powershell "<Write-Host> ${env.BUILD_ID} "
+                powershell "Write-Host ${env.BUILD_ID} "
                 echo "PowerShell2"
             }
         }
