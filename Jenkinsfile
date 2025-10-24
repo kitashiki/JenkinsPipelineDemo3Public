@@ -16,10 +16,10 @@ pipeline {
             steps {
                 echo 'Hello from GitHub hook trigger'
                 powershell 'echo "Hello again!"'
-        //        sh """
-        //          echo "sh again!"
-        //          echo 'sh again again!!'
-        //        """
+                powershell """
+                  echo "not sh powershell again!"
+                  echo 'not sh powershell again again!!'
+                """
             }
         }
         stage('DayTimeStamp Test') {
@@ -28,7 +28,7 @@ pipeline {
                 // BUILD TIMESTAMP をプラグインしたので、時間の環境変数が使えるようになった。表示方式はJenkinsのsystemで設定できる。今はyyyyMMddにしている。
                 echo "${BUILD_TIMESTAMP}"
                 echo "${env.BUILD_TIMESTAMP}"
-                //sh 'date'
+                powershell 'date'
             }
         }
         stage('Example') {
