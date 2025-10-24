@@ -73,11 +73,11 @@ pipeline {
         //            APP_VERSION=${BRANCH_NAME}-0.1.${BUILD_NUMBER}
         //            
         //            HELM_CHART_FILE_NAME=app-staging-${APP_VERSION}.tgz
-
+//
         //        mkdir -p outputs${BUILD_NUMBER}/${BUILD_NUMBER}
-
+//
         //        echo ${HELM_CHART_FILE_NAME} > outputs${BUILD_NUMBER}/staging-chart-filename.txt && cat outputs${BUILD_NUMBER}/staging-chart-filename.txt
-                    
+//                   
         //        ls -l outputs${BUILD_NUMBER}/
         //      '''
                 // フォルダーをstashすることで、次のステージにフォルダーを持ち込める
@@ -99,7 +99,7 @@ pipeline {
         //    steps {
         //        // short form 
         //        sh 'echo hello'
-
+//
         //        // long form
         //        sh([script: 'echo hello'])
         //    }
